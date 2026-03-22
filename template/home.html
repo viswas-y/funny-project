@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Friend Request</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(120deg,#667eea,#764ba2);
+}
+
+/* Card */
+.container{
+width:420px;
+padding:45px;
+text-align:center;
+border-radius:30px;
+background:#f2f2f2;
+box-shadow:10px 10px 25px rgba(0,0,0,0.2),
+           -10px -10px 25px rgba(255,255,255,0.6);
+position:relative;
+}
+
+/* Title */
+h1{
+font-size:30px;
+color:#444;
+margin-bottom:35px;
+}
+
+/* Buttons */
+button{
+padding:14px 30px;
+font-size:18px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+/* YES button */
+.yes{
+background:#4CAF50;
+color:white;
+margin-right:20px;
+}
+
+.yes:hover{
+transform:scale(1.1);
+}
+
+/* NO button */
+.no{
+background:#ff5252;
+color:white;
+position:absolute;
+}
+
+/* Message box */
+.message{
+margin-top:35px;
+padding:14px 20px;
+border-radius:20px;
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+display:inline-block;
+font-size:18px;
+color:#333;
+min-height:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Anna annan enne aniyan akamoo? 😄</h1>
+
+<button class="yes" onclick="sendEmail()">Akam 👍</button>
+<button class="no" id="noBtn">Venda 👎</button>
+
+<div class="message" id="msg">Venda button press cheyyalle 😜</div>
+
+</div>
+
+<script>
+
+function sendEmail(){
+
+document.getElementById("msg").innerText="Super! Email open cheyyunnu 📧";
+
+window.location.href =
+"mailto:ambadyviswas7@gmail.com?subject=Friend Request Accepted&body=Anna, njan aniyan aayi!";
+
+}
+
+const noBtn=document.getElementById("noBtn");
+const msg=document.getElementById("msg");
+
+const funnyMessages=[
+"😂 Venda click cheyyan pattilla!",
+"😜 Ayyoo venda venda!",
+"🏃 Catch me if you can!",
+"🤣 Anna please YES adikku!",
+"🙈 Venda button odi poyi!"
+];
+
+noBtn.addEventListener("mouseover",function(){
+
+const container=document.querySelector(".container");
+
+const x=Math.random()*(container.clientWidth-noBtn.offsetWidth);
+const y=Math.random()*(container.clientHeight-noBtn.offsetHeight);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+const randomMessage=funnyMessages[Math.floor(Math.random()*funnyMessages.length)];
+msg.innerText=randomMessage;
+
+});
+
+</script>
+
+</body>
+</html>
